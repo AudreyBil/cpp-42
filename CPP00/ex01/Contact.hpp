@@ -6,7 +6,7 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 13:42:41 by abillote          #+#    #+#             */
-/*   Updated: 2025/07/15 13:56:01 by abillote         ###   ########.fr       */
+/*   Updated: 2025/07/15 14:25:33 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ class Contact
 {
 	public:
 		Contact();
-		Contact(const std::string firstName, const std::string lastName, const std::string nickname,
-			const std::string phoneNumber, const std::string darkestSecret, const int contactNumber, const int index);
+		Contact(const std::string& firstName, const std::string& lastName, const std::string& nickname,
+	const std::string& phoneNumber, const std::string&darkestSecret, const int contactNumber, const int index);
 		~Contact();
 
 		std::string getFirstName() const;

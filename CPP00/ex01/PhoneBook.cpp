@@ -6,7 +6,7 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 13:42:27 by abillote          #+#    #+#             */
-/*   Updated: 2025/07/15 14:16:34 by abillote         ###   ########.fr       */
+/*   Updated: 2025/07/15 14:24:19 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,16 @@ PhoneBook::~PhoneBook()
 
 Contact PhoneBook::getOldestContact() const
 {
-	Contact oldestContact = contact[0];
+	int oldestIndex = 0;
 
-	for (int i = 1; i < MAX_CONTACTS; i++)
+	for (int i = 1; i < m_contactCount; i++)
 	{
-		if (contact[i].getContactNumber() < oldestContact.getContactNumber())
+		if (contact[i].getContactNumber() < contact[oldestIndex].getContactNumber())
 		{
-			oldestContact = contact[i];
-
+			oldestIndex = i;
 		}
 	}
-
-	return (oldestContact);
+	return (contact[oldestIndex]);
 }
 
 void PhoneBook::addContact(const std::string& firstName, const std::string& lastName, const std::string& nickname,

@@ -6,7 +6,7 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 13:42:49 by abillote          #+#    #+#             */
-/*   Updated: 2025/07/15 14:14:28 by abillote         ###   ########.fr       */
+/*   Updated: 2025/07/15 14:21:12 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include <iomanip>
 #include "Contact.hpp"
 
-#define MAX_CONTACTS 2
+#define MAX_CONTACTS 8
 
 class PhoneBook
 {
