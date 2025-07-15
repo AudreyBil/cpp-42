@@ -6,7 +6,7 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 13:42:41 by abillote          #+#    #+#             */
-/*   Updated: 2025/07/14 14:44:25 by abillote         ###   ########.fr       */
+/*   Updated: 2025/07/15 13:56:01 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,26 @@ class Contact
 {
 	public:
 		Contact();
-		Contact(std::string first_name, std::string last_name, std::string nick_name,
-			std::string phone_number, std::string darkest_secret)
+		Contact(const std::string firstName, const std::string lastName, const std::string nickname,
+			const std::string phoneNumber, const std::string darkestSecret, const int contactNumber, const int index);
 		~Contact();
 
-		void getFirstName();
-		void getLastName();
-		void getNickname();
-		void getPhoneNumber();
-		void getDarkestSecret();
+		std::string getFirstName() const;
+		std::string getLastName() const;
+		std::string getNickname() const;
+		std::string getPhoneNumber() const;
+		std::string getDarkestSecret() const;
+		int getIndex() const;
+		int getContactNumber() const;
 
 	private:
-		std::string first_name;
-		std::string last_name;
-		std::string nick_name;
-		std::string phone_number;
-		std::string darkest_secret;
+		std::string m_firstName;
+		std::string m_lastName;
+		std::string m_nickname;
+		std::string m_phoneNumber;
+		std::string m_darkestSecret;
+		int m_index;
+		int m_contactNumber;
 
 };
 

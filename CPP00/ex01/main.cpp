@@ -6,33 +6,62 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 13:42:45 by abillote          #+#    #+#             */
-/*   Updated: 2025/07/14 14:45:39 by abillote         ###   ########.fr       */
+/*   Updated: 2025/07/15 13:45:05 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
-#include "Contact.hpp"
-#include <iostream>
 
+bool isValidNumber(const std::string& str) {
+	if (str.empty()) return false;
 
-void getUserInput(PhoneBook phonebook)
+	for (size_t i = 0; i < str.length(); i++) {
+		if (!std::isdigit(str[i])) {
+			return false;
+		}
+	}
+	return true;
+}
+
+std::string formatColumn(const std::string& text)
 {
-	std::string first_name;
-	std::cout << "User First Name:";
-	std::getline(std::cin, first_name);
-	std::string last_name;
-	std::cout << "User Last Name:";
-	std::getline(std::cin, last_name);
-	std::string nickname;
-	std::cout << "User Nickname:";
-	std::getline(std::cin, nickname);
-	std::string phone_number;
-	std::cout << "User Phone number:";
-	std::getline(std::cin, phone_number);
-	std::string darkest_secret;
-	std::cout << "User Darkest Secret:";
-	std::getline(std::cin, darkest_secret);
-	phonebook.addContact(first_name, last_name, nickname, phone_number, darkest_secret);
+	if (text.length() <= 10)
+		return text;
+	else
+	 return text.substr(0,9) + ".";
+}
+
+bool isOnlyWhitespace(const std::string& str)
+{
+	for (size_t i = 0; i < str.length(); i++)
+	{
+		if (!std::isspace(str[i]))
+			return false;
+	}
+	return true;
+}
+
+std::string getValidatedInput(const std::string& prompt)
+{
+	std::string input;
+	do {
+		std::cout << prompt;
+		std::getline(std::cin, input);
+		if (input.empty() || isOnlyWhitespace(input))
+			std::cout << "Input cannot be empty or contain only whitespace. Please try again.\n";
+	} while (input.empty() || isOnlyWhitespace(input));
+	return input;
+}
+
+void getUserInput(PhoneBook& phonebook)
+{
+	std::string firstName = getValidatedInput("User First Name: ");
+	std::string lastName = getValidatedInput("User Last Name: ");
+	std::string nickname = getValidatedInput("User Nickname: ");
+	std::string phoneNumber = getValidatedInput("User Phone number: ");
+	std::string darkestSecret = getValidatedInput("User Darkest Secret: ");
+
+	phonebook.addContact(firstName, lastName, nickname, phoneNumber, darkestSecret);
 }
 
 int main()
@@ -50,11 +79,10 @@ int main()
 		}
 		else if (command == "SEARCH")
 		{
-			searchContact(phonebook);
+			phonebook.searchContact();
 		}
 		else if (command == "EXIT")
 		{
-			PhoneBook::~PhoneBook(phonebook);
 			return 0;
 		}
 	}
