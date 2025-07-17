@@ -6,7 +6,7 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 13:42:45 by abillote          #+#    #+#             */
-/*   Updated: 2025/07/15 14:27:49 by abillote         ###   ########.fr       */
+/*   Updated: 2025/07/17 13:06:06 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ int main()
 	{
 		std::cout << "Please enter one of the following commands: ADD, SEARCH or EXIT\n";
 		std::getline(std::cin, command);
+		if (std::cin.eof())
+			break;
 		if (command == "ADD")
 		{
 			getUserInput(phonebook);
