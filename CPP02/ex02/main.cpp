@@ -6,7 +6,7 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 13:40:03 by abillote          #+#    #+#             */
-/*   Updated: 2025/07/18 18:28:35 by abillote         ###   ########.fr       */
+/*   Updated: 2025/07/19 12:33:11 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ int main() {
 	std::cout << "a as integer = " << a.toInt() << std::endl;
 
 	// Test comparisons
-	std::cout << "\n3. Testing comparisons:" << std::endl;
+	std::cout << "\n3. Testing comparisons: \n (a = 1234.4321 b = 10)" << std::endl;
 	std::cout << "b > a: " << (b > a) << std::endl;
 	std::cout << "b >= a: " << (b >= a) << std::endl;
 	std::cout << "b < a: " << (b < a) << std::endl;
 	std::cout << "b <= a: " << (b <= a) << std::endl;
-	std::cout << "c == d: " << (c == d) << std::endl;
+	std::cout << "a == b: " << (a == b) << std::endl;
 	std::cout << "a != b: " << (a != b) << std::endl;
 
 	// Test arithmetic
@@ -67,7 +67,7 @@ int main() {
 	std::cout << "max(b, c) = " << Fixed::max(b, c) << std::endl;
 
 	// Subject example
-	std::cout << "\n7. Exercise example:" << std::endl;
+	std::cout << "\n7. Subject example:" << std::endl;
 	Fixed test_a;
 	Fixed const test_b(Fixed(5.05f) * Fixed(2));
 

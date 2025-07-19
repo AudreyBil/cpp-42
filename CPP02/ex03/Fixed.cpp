@@ -6,7 +6,7 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 13:40:11 by abillote          #+#    #+#             */
-/*   Updated: 2025/07/19 12:28:28 by abillote         ###   ########.fr       */
+/*   Updated: 2025/07/19 16:05:51 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 
 Fixed::Fixed() : m_fp_value(0) {
-	std::cout << "Default constructor called\n";
+	//std::cout << "Default constructor called\n";
 };
 
 Fixed::Fixed(const Fixed& other) {
-	std::cout << "Copy constructor called\n";
+	//std::cout << "Copy constructor called\n";
 	this->m_fp_value = other.getRawBits();
 }
 
 Fixed& Fixed::operator=(const Fixed& other)
 {
-	std::cout << "Copy assignement operator called\n";
+	//std::cout << "Copy assignement operator called\n";
 	if (this != &other) {
 		this->m_fp_value = other.getRawBits();
 	}
@@ -33,18 +33,18 @@ Fixed& Fixed::operator=(const Fixed& other)
 
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called\n";
+	//std::cout << "Destructor called\n";
 }
 
 Fixed::Fixed(const int input)
 {
-	std::cout << "Int constructor called\n";
+	//std::cout << "Int constructor called\n";
 	m_fp_value = input << m_fractionalBits;
 }
 
 Fixed::Fixed(const float input)
 {
-	std::cout << "Float constructor called\n";
+	//std::cout << "Float constructor called\n";
 	m_fp_value = (int)roundf(input * (1 << m_fractionalBits));
 }
 
