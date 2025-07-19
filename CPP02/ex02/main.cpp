@@ -6,7 +6,7 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 13:40:03 by abillote          #+#    #+#             */
-/*   Updated: 2025/07/19 12:33:11 by abillote         ###   ########.fr       */
+/*   Updated: 2025/07/19 16:22:02 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ int main() {
 	std::cout << "a == b: " << (a == b) << std::endl;
 	std::cout << "a != b: " << (a != b) << std::endl;
 
-	// Test arithmetic
-	std::cout << "\n4. Testing arithmetic:" << std::endl;
+	// Test arithmetic (c = 42.42f, b = 10)
+	std::cout << "\n4. Testing arithmetic (c = 42.42f, b = 10):" << std::endl;
 	std::cout << "b + c = " << (b + c) << std::endl;
 	std::cout << "c - b = " << (c - b) << std::endl;
 	std::cout << "b * 2 = " << (b * Fixed(2)) << std::endl;
