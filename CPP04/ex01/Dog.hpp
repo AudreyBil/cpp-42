@@ -6,7 +6,7 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 12:25:42 by abillote          #+#    #+#             */
-/*   Updated: 2025/07/22 14:34:43 by abillote         ###   ########.fr       */
+/*   Updated: 2025/07/22 21:29:09 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ class Dog : public Animal {
 		~Dog();
 
 		void makeSound() const;
+		Brain *getBrain() const;
 
 	private:
 		Brain* m_brain;

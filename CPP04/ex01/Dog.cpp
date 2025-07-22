@@ -6,7 +6,7 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 12:25:33 by abillote          #+#    #+#             */
-/*   Updated: 2025/07/22 14:35:56 by abillote         ###   ########.fr       */
+/*   Updated: 2025/07/22 21:34:17 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,9 @@ Dog::~Dog()
 void Dog::makeSound() const
 {
 	std::cout << MAGENTA << "WOUF WOUF!" << RESET << "\n";
+}
+
+Brain* Dog::getBrain() const
+{
+	return m_brain;
 }

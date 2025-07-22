@@ -6,7 +6,7 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:25:21 by abillote          #+#    #+#             */
-/*   Updated: 2025/07/22 19:00:17 by abillote         ###   ########.fr       */
+/*   Updated: 2025/07/22 21:45:33 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void Brain::setIdea(int index, const std::string& idea)
 
 void Brain::printIdeas(int count) const
 {
-	std::cout << "Brain ideas: ";
 	for (int i = 0; i < count && i < 100; i++)
 	{
 		if (!ideas[i].empty())
