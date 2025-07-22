@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/20 15:00:16 by abillote          #+#    #+#             */
-/*   Updated: 2025/07/22 11:00:17 by abillote         ###   ########.fr       */
+/*   Created: 2025/07/22 12:26:53 by abillote          #+#    #+#             */
+/*   Updated: 2025/07/22 14:06:12 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRAGTRAP_HPP
-#define FRAGTRAP_HPP
-#include "ClapTrap.hpp"
+#ifndef WRONGCAT_HPP
+#define WRONGCAT_HPP
 
-class FragTrap : virtual public ClapTrap {
+#include "WrongAnimal.hpp"
+
+class WrongCat : public WrongAnimal {
 	public:
-		FragTrap();
-		FragTrap(const std::string& name);
-		FragTrap(const FragTrap& other);
-		FragTrap& operator=(const FragTrap& other);
-		virtual ~FragTrap();
+		WrongCat();
+		WrongCat(std::string type);
+		WrongCat(const WrongCat& other);
+		WrongCat& operator=(const WrongCat& other);
+		~WrongCat();
 
-		void highFivesGuys(void);
+		void makeSound() const;
 };
-
 
 #endif

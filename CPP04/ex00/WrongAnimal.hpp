@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/20 15:00:16 by abillote          #+#    #+#             */
-/*   Updated: 2025/07/22 11:00:17 by abillote         ###   ########.fr       */
+/*   Created: 2025/07/22 12:26:43 by abillote          #+#    #+#             */
+/*   Updated: 2025/07/22 14:05:17 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRAGTRAP_HPP
-#define FRAGTRAP_HPP
-#include "ClapTrap.hpp"
+#ifndef WRONGANIMAL_HPP
+#define WRONGANIMAL_HPP
 
-class FragTrap : virtual public ClapTrap {
+#include "Animal.hpp"
+
+class WrongAnimal {
 	public:
-		FragTrap();
-		FragTrap(const std::string& name);
-		FragTrap(const FragTrap& other);
-		FragTrap& operator=(const FragTrap& other);
-		virtual ~FragTrap();
+		WrongAnimal();
+		WrongAnimal(std::string type);
+		WrongAnimal(const WrongAnimal& other);
+		WrongAnimal& operator=(const WrongAnimal& other);
+		virtual ~WrongAnimal();
 
-		void highFivesGuys(void);
+		void makeSound() const;
+		std::string getType() const;
+
+	protected:
+		std::string m_type;
 };
-
 
 #endif

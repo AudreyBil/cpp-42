@@ -1,13 +1,14 @@
-NAME = diamondtrap
+NAME = polymorphism
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = ClapTrap.cpp \
-	main.cpp \
-	ScavTrap.cpp \
-	FragTrap.cpp \
-	DiamondTrap.cpp
+SRC = main.cpp \
+	Animal.cpp \
+	Cat.cpp \
+	Dog.cpp \
+	WrongAnimal.cpp \
+	WrongCat.cpp
 
 OBJDIR = obj
 

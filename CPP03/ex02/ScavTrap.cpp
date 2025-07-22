@@ -6,7 +6,7 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 13:44:51 by abillote          #+#    #+#             */
-/*   Updated: 2025/07/20 14:47:44 by abillote         ###   ########.fr       */
+/*   Updated: 2025/07/22 10:51:58 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& other)
 	std::cout << "ScavTrap Copy assignment constructor called\n";
 	if (this != &other)
 	{
+		ClapTrap::operator=(other);
 		this->m_name = other.m_name;
 		this->m_hitPoints = other.m_hitPoints;
 		this->m_energyPoints = other.m_energyPoints;

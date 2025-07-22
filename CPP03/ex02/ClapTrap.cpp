@@ -6,7 +6,7 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 16:27:33 by abillote          #+#    #+#             */
-/*   Updated: 2025/07/20 15:12:47 by abillote         ###   ########.fr       */
+/*   Updated: 2025/07/22 12:10:33 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 	}
 	if(m_hitPoints <= 0)
 	{
-		std::cout << RED << "ClapTrap " << m_name << " is dead and cannot repair itself!"
+		std::cout << YELLOW << "ClapTrap " << m_name << " is dead and cannot repair itself."
 					<< RESET << "\n";
 		return;
 	}

@@ -6,7 +6,7 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 15:00:37 by abillote          #+#    #+#             */
-/*   Updated: 2025/07/20 20:23:37 by abillote         ###   ########.fr       */
+/*   Updated: 2025/07/22 12:12:46 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ FragTrap& FragTrap::operator=(const FragTrap& other)
 	std::cout << "FragTrap Copy assignment constructor called\n";
 	if (this != &other)
 	{
+		ClapTrap::operator=(other);
 		this->m_name = other.m_name;
 		this->m_hitPoints = other.m_hitPoints;
 		this->m_energyPoints = other.m_energyPoints;
@@ -55,6 +56,12 @@ FragTrap::~FragTrap()
 
 void FragTrap::highFivesGuys(void)
 {
+	if (m_hitPoints <= 0)
+	{
+		std::cout << YELLOW << "FragTrap " << m_name << " is dead and cannot request a high five."
+					<< RESET << "\n";
+		return;
+	}
 	std::cout << GREEN << "FragTrap " << m_name << " enthusiastically requests high-fives from everyone! ✋"
 				<< std::endl;
 }
