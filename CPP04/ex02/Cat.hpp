@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/22 12:25:42 by abillote          #+#    #+#             */
-/*   Updated: 2025/07/23 14:44:03 by abillote         ###   ########.fr       */
+/*   Created: 2025/07/22 12:25:57 by abillote          #+#    #+#             */
+/*   Updated: 2025/07/22 18:53:36 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-#define DOG_HPP
+#ifndef CAT_HPP
+#define CAT_HPP
 
 #include "Animal.hpp"
 #include "Brain.hpp"
 
-class Dog : public Animal {
+class Cat : public Animal {
 	public:
-		Dog();
-		Dog(std::string type);
-		Dog(const Dog& other);
-		Dog& operator=(const Dog& other);
-		~Dog();
+		Cat();
+		Cat(std::string type);
+		Cat(const Cat& other);
+		Cat& operator=(const Cat& other);
+		~Cat();
 
 		void makeSound() const;
 		Brain *getBrain() const;
-		
+
 	private:
 		Brain* m_brain;
 };
-
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 12:25:03 by abillote          #+#    #+#             */
-/*   Updated: 2025/07/23 14:53:20 by abillote         ###   ########.fr       */
+/*   Updated: 2025/07/23 14:53:50 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,11 @@ int main()
 	dog.getBrain()->printIdeas(2);
 	std::cout << GREEN << "Copied Dog Ideas:" << RESET << "\n";
 	copyDog.getBrain()->printIdeas(2);
+
+	// std::cout << CYAN << "Trying to instantiate Animal Class - this should not compile"<< RESET << "\n";
+	// Animal animal;
+	// std::cout << "animal type is " << animal.getType() << std::endl;
+
 
 	return 0;
 }
