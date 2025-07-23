@@ -6,7 +6,7 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/17 13:40:03 by abillote          #+#    #+#             */
-/*   Updated: 2025/07/19 16:17:37 by abillote         ###   ########.fr       */
+/*   Updated: 2025/07/23 11:04:38 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@ int main( void ) {
 	std::cout << "\n=== toFloat() test ===\n" << std::endl;
 	std::cout << "a is " << a.toFloat() << " as float" << std::endl;
 	std::cout << "c is " << c.toFloat() << " as float\n" << std::endl;
+
+	std::cout << "\n=== RawBits test===\n" << std::endl;
+	std::cout << "a is " << a.getRawBits() << " as a fixed point" << std::endl;
+	std::cout << "b is " << b.getRawBits() << " as a fixed point" << std::endl;
+	std::cout << "c is " << c.getRawBits() << " as a fixed point" << std::endl;
+	std::cout << "d is " << d.getRawBits() << " as a fixed point" << std::endl;
 
 	return 0;
 }
