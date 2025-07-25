@@ -23,19 +23,16 @@ This repository contains a comprehensive C++ learning curriculum covering fundam
 ### Exercises:
 
 #### Exercise 00: Megaphone
-**File:** `CPP00/ex00/megaphone.cpp`
 
-**What it does:** Creates a program that converts command-line arguments to uppercase, mimicking a megaphone.
+Creates a program that converts command-line arguments to uppercase, mimicking a megaphone.
 
 #### Exercise 01: My Awesome PhoneBook
-**Files:** `CPP00/ex01/PhoneBook.*`, `Contact.*`, `main.cpp`
 
-**What it does:** Implements a phonebook application that can store contacts and search through them.
+Implements a phonebook application that can store contacts and search through them.
 
 #### Exercise 02: The Job Of Your Dreams
-**Files:** `CPP00/ex02/Account.*`, `tests.cpp`
 
-**What it does:** Implements a bank account class with deposit/withdrawal functionality and logging.
+Implements a bank account class with deposit/withdrawal functionality and logging.
 
 ---
 
@@ -51,39 +48,32 @@ This repository contains a comprehensive C++ learning curriculum covering fundam
 ### Exercises:
 
 #### Exercise 00: BraiiiiiiinnnzzzZ
-**Files:** `CPP01/ex00/Zombie.*`, `newZombie.cpp`, `randomChump.cpp`, `main.cpp`
 
-**What it does:** Creates zombie objects both on stack and heap, demonstrating memory management.
+Creates zombie objects both on stack and heap, demonstrating memory management.
 
 #### Exercise 01: Moar brainz!
-**Files:** `CPP01/ex01/Zombie.*`, `zombieHorde.cpp`, `main.cpp`
 
-**What it does:** Creates an array of zombie objects dynamically.
+Creates an array of zombie objects dynamically.
 
 #### Exercise 02: HI THIS IS BRAIN
-**Files:** `CPP01/ex02/main.cpp`
 
-**What it does:** Demonstrates the differences between pointers and references.
+Demonstrates the differences between pointers and references.
 
 #### Exercise 03: Unnecessary violence
-**Files:** `CPP01/ex03/Weapon.*`, `HumanA.*`, `HumanB.*`, `main.cpp`
 
-**What it does:** Implements weapon system where humans can have weapons by reference or pointer.
+Implements weapon system where humans can have weapons by reference or pointer.
 
 #### Exercise 04: Sed is for losers
-**Files:** `CPP01/ex04/main.cpp`
 
-**What it does:** Creates a file processor that replaces strings in text files.
+Creates a file processor that replaces strings in text files.
 
 #### Exercise 05: Harl 2.0
-**Files:** `CPP01/ex05/Harl.*`, `main.cpp`
 
-**What it does:** Implements a logging system with different log levels.
+Implements a logging system with different log levels.
 
 #### Exercise 06: Harl filter
-**Files:** `CPP01/ex06/Harl.*`, `main.cpp`
 
-**What it does:** Extends Harl with filtering capabilities using switch statements.
+Extends Harl with filtering capabilities using switch statements.
 
 ---
 
@@ -99,24 +89,20 @@ This repository contains a comprehensive C++ learning curriculum covering fundam
 ### Exercises:
 
 #### Exercise 00: My First Class in Orthodox Canonical Form
-**Files:** `CPP02/ex00/Fixed.*`, `main.cpp`
 
-**What it does:** Implements a basic fixed-point number class following Orthodox Canonical Form.
+Implements a basic fixed-point number class following Orthodox Canonical Form.
 
 #### Exercise 01: Towards a more useful fixed-point number class
-**Files:** `CPP02/ex01/Fixed.*`, `main.cpp`
 
-**What it does:** Extends the Fixed class with conversion capabilities and output formatting.
+Extends the Fixed class with conversion capabilities and output formatting.
 
 #### Exercise 02: Now we're talking
-**Files:** `CPP02/ex02/Fixed.*`, `main.cpp`
 
-**What it does:** Implements a full-featured fixed-point arithmetic class.
+Implements a full-featured fixed-point arithmetic class.
 
 #### Exercise 03: BSP
-**Files:** `CPP02/ex03/Point.*`, `Fixed.*`, `bsp.cpp`, `main.cpp`
 
-**What it does:** Determines if a point is inside a triangle using fixed-point arithmetic.
+Determines if a point is inside a triangle using fixed-point arithmetic.
 
 ---
 
@@ -133,24 +119,20 @@ This repository contains a comprehensive C++ learning curriculum covering fundam
 ### Exercises:
 
 #### Exercise 00: Aaaaand... OPEN!
-**Files:** `CPP03/ex00/ClapTrap.*`, `main.cpp`
 
-**What it does:** Implements a ClapTrap robot with attack, repair, and take damage functionality.
+Implements a ClapTrap robot with attack, repair, and take damage functionality.
 
 #### Exercise 01: Serena, my love!
-**Files:** `CPP03/ex01/ClapTrap.*`, `ScavTrap.*`, `main.cpp`
 
-**What it does:** Creates ScavTrap inheriting from ClapTrap with additional guard gate functionality.
+Creates ScavTrap inheriting from ClapTrap with additional guard gate functionality.
 
 #### Exercise 02: Repetitive work
-**Files:** `CPP03/ex02/ClapTrap.*`, `ScavTrap.*`, `FragTrap.*`, `main.cpp`
 
-**What it does:** Adds FragTrap class with high five functionality, alongside ScavTrap.
+Adds FragTrap class with high five functionality, alongside ScavTrap.
 
 #### Exercise 03: Now it's weird!
-**Files:** `CPP03/ex03/DiamondTrap.*`, `ClapTrap.*`, `ScavTrap.*`, `FragTrap.*`, `main.cpp`
 
-**What it does:** Implements DiamondTrap inheriting from both ScavTrap and FragTrap, solving the diamond problem.
+Implements DiamondTrap inheriting from both ScavTrap and FragTrap, solving the diamond problem.
 
 ---
 
@@ -168,25 +150,20 @@ This repository contains a comprehensive C++ learning curriculum covering fundam
 ### Exercises:
 
 #### Exercise 00: Polymorphism
-**Files:** `CPP04/ex00/Animal.*`, `Dog.*`, `Cat.*`, `WrongAnimal.*`, `WrongCat.*`, `main.cpp`
 
-**What it does:** Demonstrates polymorphism with Animal hierarchy and shows wrong implementation.
+Demonstrates polymorphism with Animal hierarchy and shows wrong implementation.
 
 #### Exercise 01: I don't want to set the world on fire
-**Files:** `CPP04/ex01/Animal.*`, `Dog.*`, `Cat.*`, `Brain.*`, `main.cpp`
 
-**What it does:** Adds Brain class to animals, requiring proper deep copying.
+Adds Brain class to animals, requiring proper deep copying.
 
 #### Exercise 02: Abstract class
-**Files:** `CPP04/ex02/Animal.*`, `Dog.*`, `Cat.*`, `Brain.*`, `main.cpp`
 
-**What it does:** Makes Animal abstract by adding pure virtual functions.
+Makes Animal abstract by adding pure virtual functions.
 
 #### Exercise 03: Interface & recap
-**Files:** `CPP04/ex03/AMateria.*`, `ICharacter.*`, `IMateriaSource.*`, `Character.*`, `MateriaSource.*`, `Ice.*`, `Cure.*`, `main.cpp`
 
-
-**What it does:** Implements a complex materia system with interfaces for characters and materia sources.
+Implements a complex materia system with interfaces for characters and materia sources.
 
 ---
 
