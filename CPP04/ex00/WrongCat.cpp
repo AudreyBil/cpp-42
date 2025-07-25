@@ -6,7 +6,7 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 12:26:19 by abillote          #+#    #+#             */
-/*   Updated: 2025/07/22 14:09:20 by abillote         ###   ########.fr       */
+/*   Updated: 2025/07/25 10:52:04 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@ WrongCat::WrongCat()
 	std::cout << YELLOW << DIM << "WrongCat created"<< RESET << "\n";
 };
 WrongCat::WrongCat(std::string type)
-:WrongAnimal(type)
+:WrongAnimal("WrongCat")
 {
+	(void)type;
 	std::cout << YELLOW << DIM << "WrongCat created"<< RESET << "\n";
 };
 
