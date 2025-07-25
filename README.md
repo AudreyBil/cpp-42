@@ -1,4 +1,6 @@
 # C++ Modules (CPP00-CPP04) - Learning Journey
+![miniRT](https://img.shields.io/badge/42-CPP-blue)
+![C++](https://img.shields.io/badge/Language-C-brightgreen)
 
 This repository contains a comprehensive C++ learning curriculum covering fundamental to intermediate object-oriented programming concepts. Each module builds upon the previous one, introducing new concepts and reinforcing programming principles.
 
