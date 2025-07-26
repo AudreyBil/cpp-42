@@ -6,7 +6,7 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 12:25:24 by abillote          #+#    #+#             */
-/*   Updated: 2025/07/25 11:20:10 by abillote         ###   ########.fr       */
+/*   Updated: 2025/07/23 14:24:55 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ class Animal {
 		Animal& operator=(const Animal& other);
 		virtual ~Animal();
 
-		virtual void makeSound() const;
+		virtual void makeSound() const = 0;
 		std::string getType() const;
 
 	protected:

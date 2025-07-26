@@ -1,35 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/22 12:25:42 by abillote          #+#    #+#             */
-/*   Updated: 2025/07/26 14:24:32 by abillote         ###   ########.fr       */
+/*   Created: 2025/07/23 15:04:42 by abillote          #+#    #+#             */
+/*   Updated: 2025/07/23 15:19:56 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-#define DOG_HPP
+#include "AMateria.hpp"
 
-#include "Animal.hpp"
-#include "Brain.hpp"
+AMateria::AMateria()
+{
 
-class Dog : public Animal {
-	public:
-		Dog();
-		Dog(std::string type);
-		Dog(const Dog& other);
-		Dog& operator=(const Dog& other);
-		~Dog();
+};
+AMateria::AMateria(std::string const & type)
+: m_type(type)
+{
 
-		void makeSound() const;
-		Brain *getBrain() const;
-
-	private:
-		Brain* m_brain;
 };
 
+AMateria::AMateria(const AMateria& other)
+{
+	this->m_type = other.m_type;
+}
 
-#endif
+AMateria& AMateria::operator=(const AMateria& other)
+{
+	if (this != &other)
+		this->m_type = other.m_type;
+	return *this;
+}
+
+AMateria::~AMateria()
+{
+
+};
+
+std::string const & AMateria::getType() const
+{
+	return m_type;
+}

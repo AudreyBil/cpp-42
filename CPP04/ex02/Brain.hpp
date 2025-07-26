@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/22 12:25:42 by abillote          #+#    #+#             */
-/*   Updated: 2025/07/26 14:24:32 by abillote         ###   ########.fr       */
+/*   Created: 2025/07/22 14:25:28 by abillote          #+#    #+#             */
+/*   Updated: 2025/07/22 18:57:32 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-#define DOG_HPP
+#ifndef BRAIN_HPP
+#define BRAIN_HPP
 
 #include "Animal.hpp"
-#include "Brain.hpp"
 
-class Dog : public Animal {
+class Brain {
 	public:
-		Dog();
-		Dog(std::string type);
-		Dog(const Dog& other);
-		Dog& operator=(const Dog& other);
-		~Dog();
+		Brain();
+		Brain(const Brain& other);
+		Brain& operator=(const Brain& other);
+		~Brain();
 
-		void makeSound() const;
-		Brain *getBrain() const;
+		std::string getIdea(int index) const;
+		void setIdea(int index, const std::string& idea);
+		void printIdeas(int count = 5) const;
+		void clearIdeas();
 
-	private:
-		Brain* m_brain;
+		std::string ideas[100];
 };
-
 
 #endif

@@ -6,12 +6,11 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/19 16:27:33 by abillote          #+#    #+#             */
-/*   Updated: 2025/07/22 12:10:59 by abillote         ###   ########.fr       */
+/*   Updated: 2025/07/23 11:56:29 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
-
 
 ClapTrap::ClapTrap()
 : m_name(""), m_hitPoints(10), m_energyPoints(10), m_attackDamage(0)

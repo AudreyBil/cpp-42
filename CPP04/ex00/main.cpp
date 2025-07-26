@@ -6,7 +6,7 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 12:25:03 by abillote          #+#    #+#             */
-/*   Updated: 2025/07/22 14:21:32 by abillote         ###   ########.fr       */
+/*   Updated: 2025/07/25 11:03:37 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,29 +18,43 @@
 
 int main()
 {
-	std::cout << CYAN << BOLD << "===Tests from the subject===" << RESET << "\n\n";
+	{
+	std::cout << CYAN << BOLD << "\n===Tests from the subject===" << RESET << "\n\n";
 	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
 	const Animal* i = new Cat();
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
+	const Animal* j = new Dog();
+	std::cout << "The first animal is a " << i->getType() << " " << std::endl;
+	std::cout << "The second animal is a " << j->getType() << " " << std::endl;
+	std::cout << "The first animal says ";
+	i->makeSound();
+	std::cout << "The second animal says ";
 	j->makeSound();
+	std::cout << "The base class Animal says ";
 	meta->makeSound();
 	std::cout << std::endl;
 	delete meta;
 	delete j;
 	delete i;
+	}
 
-	std::cout << CYAN << BOLD << "\n===Testing Wrong Cat - no virtual function===" << RESET << "\n\n";
-	const WrongAnimal* base = new WrongAnimal();
+	{
+	std::cout << CYAN << BOLD << "\n===Testing Wrong Cat with Animal pointer - no virtual function===" << RESET << "\n\n";
 	const WrongAnimal* wrongCat = new WrongCat();
-	std::cout << wrongCat->getType() << " " << std::endl;
+	std::cout << "The Wrong Cat is a " << wrongCat->getType() << " " << std::endl;
+	std::cout << "The Wrong Cat says ";
 	wrongCat->makeSound();
-	base->makeSound();
 	std::cout << std::endl;
-	delete base;
 	delete wrongCat;
+	}
+
+	{
+	std::cout << CYAN << BOLD << "\n===Testing Wrong Cat direct object - no virtual function===" << RESET << "\n\n";
+	WrongCat wrongCat;
+	std::cout << "The Wrong Cat is a " << wrongCat.getType() << " " << std::endl;
+	std::cout << "The Wrong Cat says ";
+	wrongCat.makeSound();
+	std::cout << std::endl;
+	}
 
 	std::cout << CYAN << BOLD << "\n===Testing Copy Constructor and Assignment===" << RESET << "\n\n";
 	Cat originalCat;

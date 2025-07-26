@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/20 20:29:43 by abillote          #+#    #+#             */
-/*   Updated: 2025/07/23 12:41:23 by abillote         ###   ########.fr       */
+/*   Created: 2025/07/22 12:25:42 by abillote          #+#    #+#             */
+/*   Updated: 2025/07/23 14:44:03 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DIAMONDTRAP_HPP
-#define DIAMONDTRAP_HPP
+#ifndef DOG_HPP
+#define DOG_HPP
 
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
+#include "Animal.hpp"
+#include "Brain.hpp"
 
-class DiamondTrap : public ScavTrap, public FragTrap {
+class Dog : public Animal {
 	public:
-		DiamondTrap();
-		DiamondTrap(const std::string& name);
-		DiamondTrap(const DiamondTrap& other);
-		DiamondTrap& operator=(const DiamondTrap& other);
-		~DiamondTrap();
+		Dog();
+		Dog(std::string type);
+		Dog(const Dog& other);
+		Dog& operator=(const Dog& other);
+		~Dog();
 
-		void attack(const std::string& target);
-		void whoAmI();
-
-
+		void makeSound() const;
+		Brain *getBrain() const;
+		
 	private:
-		std::string m_name;
-
+		Brain* m_brain;
 };
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 20:29:15 by abillote          #+#    #+#             */
-/*   Updated: 2025/07/22 11:59:13 by abillote         ###   ########.fr       */
+/*   Updated: 2025/07/23 12:42:08 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,11 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap& other)
 DiamondTrap::~DiamondTrap()
 {
 	std::cout << "DiamondTrap "<< m_name << " destroyed\n";;
+}
+
+void DiamondTrap::attack(const std::string& target)
+{
+	ScavTrap::attack(target);
 }
 
 void DiamondTrap::whoAmI()

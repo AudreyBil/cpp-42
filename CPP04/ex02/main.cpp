@@ -6,7 +6,7 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 12:25:03 by abillote          #+#    #+#             */
-/*   Updated: 2025/07/26 14:24:09 by abillote         ###   ########.fr       */
+/*   Updated: 2025/07/25 11:45:44 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 int main()
 {
-	{
 	std::cout << CYAN << BOLD << "\n===Testing Array of Animals (Polymorphism)===" << RESET << "\n\n";
 	Animal* animals[4];
 	animals[0] = new Cat();
@@ -35,23 +34,13 @@ int main()
 	for (int i = 0; i < 4; i++) {
 		delete animals[i];
 	}
-	}
 
-	{
-	std::cout << CYAN << BOLD << "\n===Basic test of deep Copying with Copy Constructor===" << RESET << "\n\n";
-	Dog firstDog;
-	{
-		Dog tmp = firstDog;
-	}
-	firstDog.getBrain()->setIdea(0, "Original Brain is still alive!\n");
-	firstDog.getBrain()->printIdeas();
-	}
-
-	{
-	std::cout << CYAN << BOLD << "\n===More extensive test of Brain Deep Copying with Copy Constructor===" << RESET << "\n\n";
+	std::cout << CYAN << BOLD << "\n===Testing Brain Deep Copying with Copy Constructor===" << RESET << "\n\n";
 	Cat cat;
 	cat.getBrain()->setIdea(0, "I need to eat.");
 	cat.getBrain()->setIdea(1, "Let's find a human.");
+	cat.getBrain()->setIdea(2, "Oh, here is one, let's mew.");
+	cat.getBrain()->setIdea(3, "Here we go, give me food human.");
 
 	Cat copyCat(cat);
 
@@ -68,41 +57,18 @@ int main()
 	std::cout << CYAN << "Modifying the Copied Cat Brain ideas "<< RESET << "\n";
 	copyCat.getBrain()->setIdea(0, "I love fish.");
 	copyCat.getBrain()->setIdea(1, "Where could I find some?");
+	copyCat.getBrain()->setIdea(2, "Oh look, a fish tank!");
+	copyCat.getBrain()->setIdea(3, "Let's get in there");
 
 	std::cout << GREEN << "Original Cat Ideas:" << RESET << "\n";
 	cat.getBrain()->printIdeas();
 	std::cout << GREEN << "Copied Cat Ideas:" << RESET << "\n";
 	copyCat.getBrain()->printIdeas();
-	}
 
-	{
-	std::cout << CYAN << BOLD << "\n===Testing Brain Deep Copying with Copy Assignment operator Constructor===" << RESET << "\n\n";
-	Dog dog;
-	dog.getBrain()->setIdea(0, "I need to eat.");
-	dog.getBrain()->setIdea(1, "Let's find a human.");
+	// std::cout << CYAN << "Trying to instantiate Animal Class - this should not compile"<< RESET << "\n";
+	// Animal animal;
+	// std::cout << "animal type is " << animal.getType() << std::endl;
 
-	Dog copyDog;
-	copyDog = dog;
-
-	std::cout << CYAN << "Original dog brain address: " << dog.getBrain() << RESET << std::endl;
-	std::cout << CYAN << "Copied dog brain address: " << copyDog.getBrain() << RESET << std::endl;
-	std::cout << CYAN << "Different brain addresses ? (answer should be 1): "
-				<< (copyDog.getBrain() != dog.getBrain()) << RESET << "\n";
-
-	std::cout << GREEN << "Original dog Ideas:" << RESET << "\n";
-	dog.getBrain()->printIdeas(2);
-	std::cout << GREEN << "Copied dog Ideas:" << RESET << "\n";
-	copyDog.getBrain()->printIdeas(2);
-
-	std::cout << CYAN << "Modifying the Copied Dog Brain ideas "<< RESET << "\n";
-	copyDog.getBrain()->setIdea(0, "I love  running and jumping around.");
-	copyDog.getBrain()->setIdea(1, "Where could I do that?");
-
-	std::cout << GREEN << "Original Dog Ideas:" << RESET << "\n";
-	dog.getBrain()->printIdeas(2);
-	std::cout << GREEN << "Copied Dog Ideas:" << RESET << "\n";
-	copyDog.getBrain()->printIdeas(2);
-	}
 
 	return 0;
 }
