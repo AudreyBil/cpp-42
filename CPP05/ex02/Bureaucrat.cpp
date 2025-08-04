@@ -6,12 +6,12 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 09:44:22 by abillote          #+#    #+#             */
-/*   Updated: 2025/07/28 14:48:59 by abillote         ###   ########.fr       */
+/*   Updated: 2025/08/04 14:46:50 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 Bureaucrat::Bureaucrat()
 : m_name("default"), m_grade(150)
@@ -75,7 +75,7 @@ void Bureaucrat::decrementGrade()
 		m_grade++;
 }
 
-void Bureaucrat::signForm(Form& form)
+void Bureaucrat::signForm(AForm& form)
 {
 	try {
 		form.beSigned(*this);
@@ -84,6 +84,18 @@ void Bureaucrat::signForm(Form& form)
 	catch (const std::exception &e){
 		std::cout << this->getName() << " couldn't sign " << form.getName()
 					<< " because " << e.what() << std::endl;
+	}
+}
+
+void Bureaucrat::executeForm(AForm const & form) const
+{
+	try {
+		form.execute(*this);
+		std::cout << GREEN << BOLD << this->getName() << " executed " << form.getName() << RESET << std::endl;
+	}
+	catch (const std::exception &e){
+		std::cout << RED << BOLD << this->getName() << " couldn't execute " << form.getName()
+					<< " because " << e.what() << RESET << std::endl;
 	}
 }
 

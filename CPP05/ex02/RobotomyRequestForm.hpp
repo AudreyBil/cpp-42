@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/29 14:17:30 by abillote          #+#    #+#             */
-/*   Updated: 2025/08/01 14:30:02 by abillote         ###   ########.fr       */
+/*   Created: 2025/08/02 14:01:09 by abillote          #+#    #+#             */
+/*   Updated: 2025/08/02 14:53:56 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHRUBBERYCREATIONFROM_HPP
-#define SHRUBBERYCREATIONFROM_HPP
+#ifndef ROBOTOMYREQUESTFORM_HPP
+#define ROBOTOMYREQUESTFORM_HPP
 
 #include "AForm.hpp"
-#include "fstream"
+#include <cstdlib>
 
-class ShrubberyCreationForm : public AForm {
+class RobotomyRequestForm : public AForm {
 	public:
-		ShrubberyCreationForm();
-		ShrubberyCreationForm(const std::string target);
-		ShrubberyCreationForm(const ShrubberyCreationForm& other);
-		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
-		~ShrubberyCreationForm();
+		RobotomyRequestForm();
+		RobotomyRequestForm(const std::string target);
+		RobotomyRequestForm(const RobotomyRequestForm& other);
+		RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
+		~RobotomyRequestForm();
 
 		void execute(Bureaucrat const& executor) const;
 

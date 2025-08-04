@@ -6,7 +6,7 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 13:48:07 by abillote          #+#    #+#             */
-/*   Updated: 2025/07/29 14:13:12 by abillote         ###   ########.fr       */
+/*   Updated: 2025/08/04 14:43:52 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,17 @@ void AForm::beSigned(Bureaucrat& bureaucrat)
 		m_isSigned = 1;
 }
 
+void AForm::checkExecuteRequirement(Bureaucrat const& executor, int gradeExecutor) const
+{
+	if (getIsSigned() == 0)
+		throw AForm::FormNotSignedException();
+	if (executor.getGrade() > gradeExecutor)
+		throw AForm::GradeTooLowException();
+}
+
 std::ostream& operator<<(std::ostream& out, const AForm& AForm)
 {
-	out << AForm.getName() << ", can be signed from Grade" << AForm.getGradeSigner()
+	out << AForm.getName() << " can be signed from Grade " << AForm.getGradeSigner()
 		<< " and can be executed from Grade " << AForm.getGradeExecuter()
 		<< "\nSigned? : " << AForm.getIsSigned() << std::endl;
 	return (out);
@@ -85,10 +93,15 @@ std::ostream& operator<<(std::ostream& out, const AForm& AForm)
 
 const char* AForm::GradeTooHighException::what() const throw ()
 {
-	return "Grade is too high.";
+	return "their grade is too high.";
 }
 
 const char* AForm::GradeTooLowException::what() const throw ()
 {
-	return "Grade is too low.";
+	return "their grade is too low.";
+}
+
+const char* AForm::FormNotSignedException::what() const throw ()
+{
+	return "the form must be signed before its execution.";
 }
