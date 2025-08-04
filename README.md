@@ -1,8 +1,8 @@
-# C++ Modules (CPP00-CPP04) - Learning Journey
+# C++ Modules (CPP00-CPP05) - Learning Journey
 ![miniRT](https://img.shields.io/badge/42-CPP-blue)
 ![C++](https://img.shields.io/badge/Language-C++-brightgreen)
 
-This repository contains a comprehensive C++ learning curriculum covering fundamental to intermediate object-oriented programming concepts. Each module builds upon the previous one, introducing new concepts and reinforcing programming principles.
+This repository contains a comprehensive C++ learning curriculum covering fundamental to advanced object-oriented programming concepts. Each module builds upon the previous one, introducing new concepts and reinforcing programming principles.
 
 ## Table of Contents
 - [CPP Module 00: Namespaces, Classes, Member Functions, IO Streams](#cpp-module-00)
@@ -10,6 +10,7 @@ This repository contains a comprehensive C++ learning curriculum covering fundam
 - [CPP Module 02: Ad-hoc Polymorphism, Operator Overloading, Orthodox Canonical Class Form](#cpp-module-02)
 - [CPP Module 03: Inheritance](#cpp-module-03)
 - [CPP Module 04: Subtype Polymorphism, Abstract Classes, Interfaces](#cpp-module-04)
+- [CPP Module 05: Repetition and Exceptions](#cpp-module-05)
 
 ---
 
@@ -166,6 +167,54 @@ Makes Animal abstract by adding pure virtual functions.
 #### Exercise 03: Interface & recap
 
 Implements a complex materia system with interfaces for characters and materia sources.
+
+---
+
+## CPP Module 05: Repetition and Exceptions
+
+**Learning Objectives:**
+- Exception handling in C++
+- Try-catch-throw mechanism
+- Custom exception classes
+- Exception safety and RAII
+- Nested exception handling
+- Exception specifications (C++98)
+
+### Exercises:
+
+#### Exercise 00: Mommy, when I grow up, I want to be a bureaucrat!
+
+Implements a `Bureaucrat` class with:
+- Name (constant) and grade (1-150, where 1 is highest)
+- Grade increment/decrement with exception handling
+- Custom exceptions: `GradeTooHighException` and `GradeTooLowException`
+- Proper exception messages and handling
+
+#### Exercise 01: Form up, maggots!
+
+Extends the bureaucrat system with a `Form` class:
+- Form with name, sign grade requirement, and execute grade requirement
+- Boolean signed status
+- `beSigned()` method that checks bureaucrat's grade
+- `signForm()` method in Bureaucrat class with error handling
+- Demonstrates form signing workflow and permission validation
+
+#### Exercise 02: No, you need form 28B, not 28C...
+
+Creates an abstract `AForm` base class and concrete implementations:
+- **ShrubberyCreationForm**: Creates ASCII art trees in files (sign: 145, exec: 137)
+- **RobotomyRequestForm**: Performs robotomy with 50% success rate (sign: 72, exec: 45)
+- **PresidentialPardonForm**: Grants presidential pardons (sign: 25, exec: 5)
+- Abstract `execute()` method with grade and signature validation
+- File I/O operations and random number generation
+
+#### Exercise 03: At least this beats coffee-making
+
+Implements an `Intern` class:
+- Factory pattern for creating forms by name
+- `makeForm()` method that creates forms from string identifiers
+- Error handling for unknown form types
+- Demonstrates dynamic form creation and polymorphism
 
 ---
 
