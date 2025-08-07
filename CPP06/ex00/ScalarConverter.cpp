@@ -6,7 +6,7 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 14:34:11 by abillote          #+#    #+#             */
-/*   Updated: 2025/08/06 17:28:27 by abillote         ###   ########.fr       */
+/*   Updated: 2025/08/07 10:04:51 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void ScalarConverter::convert(const std::string& str)
 	}
 	case UNKNOWN: {
 		std::cout << "This conversion is not possible as this type is unknown.\n";
+		break;
 	}
 	default:
 		break;

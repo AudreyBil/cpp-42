@@ -6,7 +6,7 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 14:08:19 by abillote          #+#    #+#             */
-/*   Updated: 2025/08/06 17:38:04 by abillote         ###   ########.fr       */
+/*   Updated: 2025/08/07 10:19:11 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ DataType determineType(const std::string& str)
 	}
 	if (*endptr == 'f' && errno == 0) {
 		std::strtof(cstr, &endptr);
-		if (*endptr == 'f' && errno == 0)
+		if (*endptr == 'f' && errno == 0 && *(endptr + 1) == '\0')
 			return FLOAT;
 	}
 
@@ -75,18 +75,20 @@ void convertInt(const std::string& str)
 {
 	const char* cstr = str.c_str();
 	int originalvalue = std::atoi(cstr);
-	bool tolerance = false;
-	if (std::fabs(originalvalue) < 1e6) {
-		tolerance = std::fabs(originalvalue - static_cast<int>(originalvalue)) < 0.0000000000001;
-	}
+	//bool tolerance = false;
+	//if (std::fabs(originalvalue) < 1e6) {
+	//	tolerance = std::fabs(originalvalue - static_cast<int>(originalvalue)) < 0.0000000000001;
+	//}
 
 	if (originalvalue < 32 || originalvalue > 126)
 		std::cout << "char: Non displayable\n";
 	else
 		std::cout << "char: '" << static_cast<char>(originalvalue) << "'" << std::endl;
 	std::cout << "int: " << originalvalue << std::endl;
-	std::cout << "float: " << static_cast<float>(originalvalue) << (tolerance ? ".0f" : "f" ) << std::endl;
-	std::cout << "double: " << static_cast<double>(originalvalue) << (tolerance ? ".0" : "" ) << std::endl;
+	//std::cout << "float: " << static_cast<float>(originalvalue) << (tolerance ? ".0f" : "f" ) << std::endl;
+	//std::cout << "double: " << static_cast<double>(originalvalue) << (tolerance ? ".0" : "" ) << std::endl;
+	 std::cout << "float: " << originalvalue << ".0f" << std::endl;
+	std::cout << "double: " << originalvalue << ".0" << std::endl;
 }
 
 void convertFloat(const std::string& str)

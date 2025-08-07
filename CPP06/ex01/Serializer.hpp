@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 14:34:33 by abillote          #+#    #+#             */
-/*   Updated: 2025/08/07 10:21:58 by abillote         ###   ########.fr       */
+/*   Updated: 2025/08/07 10:50:50 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER_HPP
-#define SCALARCONVERTER_HPP
+#ifndef SERIALIZER_HPP
+#define SERIALIZER_HPP
 
 #include <iostream>
 #include <cstdlib>
@@ -19,34 +19,20 @@
 #include <limits>
 #include <cmath>
 #include <iomanip>
+#include <stdint.h>
 
-class ScalarConverter {
+struct Data;
+
+class Serializer {
 	private:
-		ScalarConverter();
-		ScalarConverter(const ScalarConverter& other);
-		ScalarConverter& operator=(const ScalarConverter& other);
-		~ScalarConverter();
+		Serializer();
+		Serializer(const Serializer& other);
+		Serializer& operator=(const Serializer& other);
+		~Serializer();
 
 	public:
-		static void convert(const std::string& str);
+		static uintptr_t serialize(Data* ptr);
+		static Data* deserialize(uintptr_t raw);
 };
-
-enum DataType {
-	CHAR,
-	INT,
-	FLOAT,
-	DOUBLE,
-	UNKNOWN
-};
-
-DataType determineType(const std::string& str);
-void convertChar(const std::string& str);
-void convertInt(const std::string& str);
-void convertFloat(const std::string& str);
-void convertDouble(const std::string& str);
-
-bool isSpecialCase(const std::string& str);
-void handleSpecialCase(const std::string& str);
-
 
 #endif

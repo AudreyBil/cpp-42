@@ -1,24 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/28 11:15:45 by abillote          #+#    #+#             */
-/*   Updated: 2025/08/07 10:22:15 by abillote         ###   ########.fr       */
+/*   Created: 2025/08/05 14:34:11 by abillote          #+#    #+#             */
+/*   Updated: 2025/08/07 10:36:54 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#include "Serializer.hpp"
 
-int main(int argc, char **argv)
+Serializer::Serializer()
 {
-	if (argc != 2)
-	{
-		std::cout << "Enter one and only one argument.\n";
-		return 1;
-	}
-	ScalarConverter::convert(argv[1]);
-	return 0;
+
+};
+Serializer::Serializer(const Serializer& /*other*/)
+{
+
+};
+
+Serializer& Serializer::operator=(const Serializer& /*other*/)
+{
+	return *this;
+};
+
+Serializer::~Serializer()
+{
+
+};
+
+uintptr_t Serializer::serialize(Data* ptr)
+{
+	return reinterpret_cast<uintptr_t>(ptr);
 }
+
+Data* Serializer::deserialize(uintptr_t raw)
+{
+	return reinterpret_cast<Data*>(raw);
+}
+

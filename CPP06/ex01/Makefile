@@ -1,11 +1,10 @@
-NAME = converter
+NAME = serializer
 
 CC = c++
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRC = main.cpp \
-helpers.cpp	\
-ScalarConverter.cpp \
+Serializer.cpp \
 
 OBJDIR = obj
 
