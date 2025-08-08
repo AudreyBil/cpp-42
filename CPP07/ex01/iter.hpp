@@ -6,7 +6,7 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 11:10:55 by abillote          #+#    #+#             */
-/*   Updated: 2025/08/08 15:48:14 by abillote         ###   ########.fr       */
+/*   Updated: 2025/08/08 18:05:11 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,5 @@ void printNonConst(T& element)
 {
 	std::cout << "Printing the array element (non-const):: " << element << std::endl;
 }
-
-
 
 #endif
