@@ -6,7 +6,7 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 11:15:45 by abillote          #+#    #+#             */
-/*   Updated: 2025/07/28 14:49:53 by abillote         ###   ########.fr       */
+/*   Updated: 2025/09/08 11:57:01 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,17 @@ int main()
 
 	std::cout << "\n==== Testing Signed function ====\n";
 
+	std::cout << "\n==== Test 1 ====\n";
 	Bureaucrat boss("Boss", 1);
 	Form importantForm("Important", 1, 1);
-	std::cout <<  importantForm;
+	std::cout << "Form description: " << importantForm;
+	std::cout << "Employee description: " << boss;
 	boss.signForm(importantForm);
-	std::cout << importantForm;
 
+	std::cout << "\n==== Test 2 ====\n";
 	Bureaucrat employee("employee", 75);
 	Form importantForm2("Important2", 1, 1);
+	std::cout << "Form description: " << importantForm2;
+	std::cout << "Employee description: " << employee;
 	employee.signForm(importantForm2);
-	std::cout << importantForm2;
 }

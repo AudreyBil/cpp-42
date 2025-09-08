@@ -6,7 +6,7 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 09:44:22 by abillote          #+#    #+#             */
-/*   Updated: 2025/08/04 14:46:50 by abillote         ###   ########.fr       */
+/*   Updated: 2025/09/08 13:06:09 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void Bureaucrat::signForm(AForm& form)
 	}
 }
 
-void Bureaucrat::executeForm(AForm const & form) const
+void Bureaucrat::executeForm(AForm const& form) const
 {
 	try {
 		form.execute(*this);
