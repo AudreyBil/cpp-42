@@ -6,7 +6,7 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 14:14:39 by abillote          #+#    #+#             */
-/*   Updated: 2025/08/29 15:21:49 by abillote         ###   ########.fr       */
+/*   Updated: 2025/08/29 15:26:29 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@ std::vector<int> PmergeMe::fordJohnsonVector(std::vector<int> input)
 {
 	(void)input;
 	std::vector<int> sequence;
-	sequence = generateJacobsthalSequence<std::vector<int>>(8);
-	for (int i = 0; i < 8; i++)
+	sequence = generateJacobsthalSequence<std::vector<int>>(30);
+	for (int i = 0; i < 30; i++)
 	{
-		std::cout << sequence[i] << std::endl;
+		if (sequence[i])
+			std::cout << sequence[i] << std::endl;
 	}
 	return sequence;
 }

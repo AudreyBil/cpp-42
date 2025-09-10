@@ -1,16 +1,21 @@
-# C++ Modules (CPP00-CPP05) - Learning Journey
+# C++ Modules (CPP00-CPP08) - Learning Journey
 ![miniRT](https://img.shields.io/badge/42-CPP-blue)
 ![C++](https://img.shields.io/badge/Language-C++-brightgreen)
 
 This repository contains a comprehensive C++ learning curriculum covering fundamental to advanced object-oriented programming concepts. Each module builds upon the previous one, introducing new concepts and reinforcing programming principles.
 
 ## Table of Contents
-- [CPP Module 00: Namespaces, Classes, Member Functions, IO Streams](#cpp-module-00)
-- [CPP Module 01: Memory Allocation, Pointers, References, Switch Statement](#cpp-module-01)
-- [CPP Module 02: Ad-hoc Polymorphism, Operator Overloading, Orthodox Canonical Class Form](#cpp-module-02)
-- [CPP Module 03: Inheritance](#cpp-module-03)
-- [CPP Module 04: Subtype Polymorphism, Abstract Classes, Interfaces](#cpp-module-04)
-- [CPP Module 05: Repetition and Exceptions](#cpp-module-05)
+- [CPP Module 00: Namespaces, Classes, Member Functions, IO Streams](#cpp-module-00-namespaces-classes-member-functions-io-streams)
+- [CPP Module 01: Memory Allocation, Pointers, References, Switch Statement](#cpp-module-01-memory-allocation-pointers-references-switch-statement)
+- [CPP Module 02: Ad-hoc Polymorphism, Operator Overloading, Orthodox Canonical Class Form](#cpp-module-02-ad-hoc-polymorphism-operator-overloading-orthodox-canonical-class-form)
+- [CPP Module 03: Inheritance](#cpp-module-03-inheritance)
+- [CPP Module 04: Subtype Polymorphism, Abstract Classes, Interfaces](#cpp-module-04-subtype-polymorphism-abstract-classes-interfaces)
+- [CPP Module 05: Repetition and Exceptions](#cpp-module-05-repetition-and-exceptions)
+- [CPP Module 06: C++ Casts](#cpp-module-06-c-casts)
+- [CPP Module 07: C++ Templates](#cpp-module-07-c-templates)
+- [CPP Module 08: Templated Containers, Iterators, Algorithms](#cpp-module-08-templated-containers-iterators-algorithms)
+- [Key Programming Concepts Covered](#key-programming-concepts-covered)
+- [Compilation and Testing](#compilation-and-testing)
 
 ---
 
@@ -184,37 +189,96 @@ Implements a complex materia system with interfaces for characters and materia s
 
 #### Exercise 00: Mommy, when I grow up, I want to be a bureaucrat!
 
-Implements a `Bureaucrat` class with:
-- Name (constant) and grade (1-150, where 1 is highest)
-- Grade increment/decrement with exception handling
-- Custom exceptions: `GradeTooHighException` and `GradeTooLowException`
-- Proper exception messages and handling
+Creates a Bureaucrat class with grades (1-150) and custom exceptions for invalid operations.
 
 #### Exercise 01: Form up, maggots!
 
-Extends the bureaucrat system with a `Form` class:
-- Form with name, sign grade requirement, and execute grade requirement
-- Boolean signed status
-- `beSigned()` method that checks bureaucrat's grade
-- `signForm()` method in Bureaucrat class with error handling
-- Demonstrates form signing workflow and permission validation
+Adds a Form class that bureaucrats can sign, with grade requirements and validation.
 
 #### Exercise 02: No, you need form 28B, not 28C...
 
-Creates an abstract `AForm` base class and concrete implementations:
-- **ShrubberyCreationForm**: Creates ASCII art trees in files (sign: 145, exec: 137)
-- **RobotomyRequestForm**: Performs robotomy with 50% success rate (sign: 72, exec: 45)
-- **PresidentialPardonForm**: Grants presidential pardons (sign: 25, exec: 5)
-- Abstract `execute()` method with grade and signature validation
-- File I/O operations and random number generation
+Implements concrete form types (Shrubbery, Robotomy, Presidential) with different execution behaviors.
 
 #### Exercise 03: At least this beats coffee-making
 
-Implements an `Intern` class:
-- Factory pattern for creating forms by name
-- `makeForm()` method that creates forms from string identifiers
-- Error handling for unknown form types
-- Demonstrates dynamic form creation and polymorphism
+Creates an Intern class using factory pattern to generate forms from string names.
+
+---
+
+## CPP Module 06: C++ Casts
+
+**Learning Objectives:**
+- Understanding different types of C++ casts
+- Static cast vs dynamic cast vs const cast vs reinterpret cast
+- Type conversion and serialization
+- Runtime type identification (RTTI)
+- Safe casting practices
+
+### Exercises:
+
+#### Exercise 00: Conversion of scalar types
+
+Converts string literals to different scalar types (char, int, float, double) with proper error handling.
+
+#### Exercise 01: Serialization
+
+Demonstrates pointer serialization using reinterpret_cast to convert between pointers and integers.
+
+#### Exercise 02: Identify real type
+
+Uses dynamic_cast to identify object types at runtime without using typeinfo headers.
+
+---
+
+## CPP Module 07: C++ Templates
+
+**Learning Objectives:**
+- Function templates
+- Class templates
+- Template specialization
+- Template parameter deduction
+- Generic programming concepts
+- STL-style programming
+
+### Exercises:
+
+#### Exercise 00: Start with a few functions
+
+Implements basic template functions: swap(), min(), and max() that work with any comparable type.
+
+#### Exercise 01: Iter
+
+Creates a template function that applies a given function to each element of an array.
+
+#### Exercise 02: Array
+
+Implements a dynamic template array class with bounds checking and proper memory management.
+
+---
+
+## CPP Module 08: Templated Containers, Iterators, Algorithms
+
+**Learning Objectives:**
+- STL containers (vector, stack, list, deque, map)
+- Iterators and iterator categories
+- STL algorithms (find, count, sort)
+- Container adaptors
+- Associative containers
+- Template metaprogramming basics
+
+### Exercises:
+
+#### Exercise 00: Easy find
+
+Creates a template function that searches for integers in any STL container using iterators.
+
+#### Exercise 01: Span
+
+Implements a class that stores integers and finds the shortest/longest spans between numbers.
+
+#### Exercise 02: Mutated abomination
+
+Extends std::stack to add iterator functionality while maintaining stack behavior.
 
 ---
 
@@ -242,12 +306,19 @@ Implements an `Intern` class:
 - Static members
 - Const-correctness
 - References vs pointers
+- C++ casts (static_cast, dynamic_cast, const_cast, reinterpret_cast)
+- Templates and generic programming
+- STL containers and algorithms
+- Iterators and iterator categories
 
 ### Design Patterns
 - Orthodox Canonical Class Form
 - Factory pattern basics
 - Interface segregation
 - Composition patterns
+- Template metaprogramming
+- Container adaptation
+- Generic algorithm design
 
 ### Best Practices
 - SOLID principles introduction
@@ -255,6 +326,10 @@ Implements an `Intern` class:
 - Const-correctness
 - Proper error handling
 - Code organization and modularity
+- Template best practices
+- STL usage and performance considerations
+- Type safety with casts
+- Generic programming principles
 
 ---
 

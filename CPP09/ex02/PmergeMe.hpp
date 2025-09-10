@@ -6,7 +6,7 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 14:14:06 by abillote          #+#    #+#             */
-/*   Updated: 2025/08/29 15:22:00 by abillote         ###   ########.fr       */
+/*   Updated: 2025/08/29 15:27:05 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ class PmergeMe {
 		//std::list<int> fordJohnsonList(std::list<int> input);
 
 	private:
+		
 		template<typename Container>
 		void printContainer(const Container& container, const std::string& prefix);
 
@@ -72,7 +73,6 @@ Container PmergeMe::generateJacobsthalSequence(size_t size)
 		}
 		i++;
 	}
-
 	return sequence;
 }
 
