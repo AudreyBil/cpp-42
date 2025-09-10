@@ -6,7 +6,7 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 11:15:45 by abillote          #+#    #+#             */
-/*   Updated: 2025/07/28 11:47:49 by abillote         ###   ########.fr       */
+/*   Updated: 2025/09/08 11:34:32 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int main()
 {
-	std::cout << "==== Testing Bureaucrat constructors ====\n";
+	std::cout << "==== Testing Bureaucrat constructors && operator << overload ====\n\n";
 	std::cout << "==== Grade = 1 ====\n";
 
 	try {
 		Bureaucrat bestEmployee("Julie", 1);
 		std::cout << bestEmployee;
 	}
-	catch (const std::exception &e) {
+	catch (const std::exception& e) {
 		std::cerr << "Exception caught: " << e.what() << std::endl;
 	}
 
@@ -30,7 +30,7 @@ int main()
 	try {
 		Bureaucrat betterThanBestEmployee("Marina", 0);
 	}
-	catch (const std::exception &e) {
+	catch (const std::exception& e) {
 		std::cerr << "Exception caught: " << e.what() << std::endl;
 	}
 
@@ -53,7 +53,7 @@ int main()
 		mediumEmployee.incrementGrade();
 		std::cout << mediumEmployee;
 	}
-	catch (const std::exception &e){
+	catch (const std::exception& e){
 		std::cerr << "Exception caught: " << e.what() << std::endl;
 	}
 
@@ -63,7 +63,7 @@ int main()
 		bestEmployee.incrementGrade();
 		std::cout << bestEmployee;
 	}
-	catch (const std::exception &e){
+	catch (const std::exception& e){
 		std::cerr << "Exception caught: " << e.what() << std::endl;
 	}
 
@@ -83,7 +83,7 @@ int main()
 		worstEmployee.decrementGrade();
 		std::cout << worstEmployee;
 	}
-	catch (const std::exception &e){
+	catch (const std::exception& e){
 		std::cerr << "Exception caught: " << e.what() << std::endl;
 	}
 }
