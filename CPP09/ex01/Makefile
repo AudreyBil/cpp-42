@@ -1,7 +1,7 @@
 NAME = RPN
 
 CC = c++
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRC = main.cpp \
 	RPN.cpp
