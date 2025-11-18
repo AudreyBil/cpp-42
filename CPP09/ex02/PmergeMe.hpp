@@ -6,7 +6,7 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 14:14:06 by abillote          #+#    #+#             */
-/*   Updated: 2025/11/15 15:03:16 by abillote         ###   ########.fr       */
+/*   Updated: 2025/11/18 11:33:32 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,14 @@
 #include <sys/time.h>
 #include <algorithm>
 
+#define CLR_RED     "\033[31m"
+#define CLR_GREEN   "\033[32m"
+#define CLR_YELLOW  "\033[33m"
+#define CLR_BLUE    "\033[34m"
+#define CLR_MAGENTA "\033[35m"
+#define CLR_CYAN    "\033[36m"
+#define CLR_RESET   "\033[0m"
+
 struct Pair {
 		int lowest;
 		int highest;
@@ -37,6 +45,9 @@ class PmergeMe {
 		PmergeMe& operator=(const PmergeMe& other);
 		~PmergeMe();
 
+		// debug print
+		static void dbgLog(const char* color, const std::string& tag,
+					const std::string& msg);
 
 	private:
 
@@ -48,7 +59,7 @@ class PmergeMe {
 		std::vector<int> mergeInsertionVec(std::vector<int> input);
 		std::vector<struct Pair> makePairs(std::vector<int> input);
 		void insertPendChainVec(std::vector<Pair> pairs, std::vector<int>& mainChain, std::vector<int>pendChain);
-		int findPairing(std::vector<Pair> pairs, int lowest);
+		int findPairing(std::vector<Pair>& pairs, int lowest);
 		void insertMember(std::vector<int>& mainChain, int toInsert, int highPairing);
 
 		//Deque implementation
@@ -61,19 +72,21 @@ class PmergeMe {
 
 		int jacobsthal(int n);
 
+		// debug state
+		static bool m_debugEnabled;
+
 };
 
 template<typename Container>
 void PmergeMe::printContainer(const Container& container, const std::string& prefix)
 {
 	typename Container::const_iterator it;
-	std::cout << prefix << std::endl;
+	if (!prefix.empty())
+		std::cout << prefix << std::endl;
 	for (it = container.begin(); it != container.end(); it++) {
 		std::cout << *it << " ";
 	}
 	std::cout << std::endl;
 }
-
-
 
 #endif
