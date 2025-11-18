@@ -6,7 +6,7 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 14:14:06 by abillote          #+#    #+#             */
-/*   Updated: 2025/11/18 11:33:32 by abillote         ###   ########.fr       */
+/*   Updated: 2025/11/18 14:39:42 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ class PmergeMe {
 		std::deque<int> mergeInsertionDeq(std::vector<int> input);
 
 		template<typename Container>
-		void printContainer(const Container& container, const std::string& prefix);
+		void printContainer(const Container& container, const std::string& prefix = "");
 
 		std::vector<int> generateJacobsthalSequence(size_t size);
 
