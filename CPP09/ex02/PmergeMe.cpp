@@ -6,15 +6,17 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 14:14:39 by abillote          #+#    #+#             */
-/*   Updated: 2025/11/18 14:58:36 by abillote         ###   ########.fr       */
+/*   Updated: 2025/11/20 14:29:30 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 #include <algorithm>
+#include <cmath>
 
 //Check if input sorted before using algo
-//Add deque
+//Add deque or list
+//Check ortodoxe class formatting
 
 //debug member definition
 bool PmergeMe::m_debugEnabled = true;
@@ -26,6 +28,15 @@ void PmergeMe::dbgLog(const char* color, const std::string& tag,
 	std::cerr << color << "[" << tag << "] " << msg << CLR_RESET << std::endl;
 }
 
+
+int fordJohnsonMaxComparisons(int n) {
+	int sum = 0;
+	for (int k = 1; k <= n; k++) {
+		sum += std::ceil(log2(3.0 * k / 4.0));
+	}
+	return sum;
+}
+
 static std::string toStr(int v) {
 	std::ostringstream oss;
 	oss << v;
@@ -33,7 +44,7 @@ static std::string toStr(int v) {
 }
 
 
-PmergeMe::PmergeMe(std::vector<int> input) {
+PmergeMe::PmergeMe(std::vector<int> input): m_counter(0) {
 
 	struct timeval t1;
 	struct timeval t2;
@@ -43,6 +54,10 @@ PmergeMe::PmergeMe(std::vector<int> input) {
 	gettimeofday(&t2, NULL);
 	printContainer(output, "After:");
 	printTime("vector", t1, t2, input.size());
+	std::cout << "Number of comparisons with vector: " << m_counter << std::endl;
+	std::cout << "Ford-Johnson max comparisons for " << input.size() << " elements: "
+			  << fordJohnsonMaxComparisons(input.size()) << std::endl;
+	m_counter = 0;
 	bool is_sorted = true;
 	for (size_t i = 1; i < output.size(); i++) {
 		if (output[i-1] > output[i]) {
@@ -68,6 +83,8 @@ PmergeMe::PmergeMe(std::vector<int> input) {
 	////mergeInsertionDeq(input);
 	//gettimeofday(&t2, NULL);
 	//printTime("deque", t1, t2, input.size());
+	// std::cout << "Number of comparisons with deque: " << m_counter << std::endl;
+	// m_counter = 0;
 };
 
 //PmergeMe::PmergeMe(const PmergeMe& other) { };
@@ -87,6 +104,7 @@ std::vector<Pair> PmergeMe::makePairs(std::vector<int> input)
 
 	for (size_t i = 0; i < input.size() - 1; i += 2) {
 		Pair p;
+		m_counter++;
 		if (input[i] > input[i + 1]) {
 			p.highest = input[i];
 			p.lowest = input[i + 1];
@@ -178,15 +196,13 @@ void PmergeMe::insertPendChainVec(std::vector<Pair> pairs, std::vector<int>& mai
 	printContainer(sequence, "");
 
 	//Insert Pending Chain into Main Chain
-	size_t prevIndex = 0;
+	// size_t prevIndex = 0;
 	for (size_t i = 0; i < sequence.size(); i++) {
-		size_t maxj = std::min((size_t)sequence[i], pendChain.size() - 1);
-		for (size_t j = maxj; j > prevIndex; j--) {
-			int highPairing = findPairing(pairs, pendChain[j]);
-			dbgLog(CLR_CYAN, "Insert", "Inserting element: " + toStr(pendChain[j]) + " (pair: " + toStr(highPairing) + ")");
-			insertMember(mainChain, pendChain[j], highPairing);
-		}
-		prevIndex = sequence[i];
+		size_t j = std::min((size_t)sequence[i], pendChain.size() - 1);
+		int highPairing = findPairing(pairs, pendChain[j]);
+		dbgLog(CLR_CYAN, "Insert", "Inserting element: " + toStr(pendChain[j]) + " (pair: " + toStr(highPairing) + ")");
+		insertMember(mainChain, pendChain[j], highPairing);
+		// prevIndex = sequence[i];
 	}
 }
 
@@ -218,6 +234,7 @@ void PmergeMe::insertMember(std::vector<int>& mainChain, int toInsert, int highP
 	size_t end = pairIndex;
 	while (start < end) {
 		size_t mid = start + (end - start) / 2;
+		m_counter++;
 		if (mainChain[mid] < toInsert) {
 			start = mid + 1;
 		} else {
@@ -231,24 +248,24 @@ std::vector<int> PmergeMe::generateJacobsthalSequence(size_t size)
 {
 	std::vector<int> sequence;
 	int i = 1;
-	int lastValue = -1;
+	int lastValue = 0;
 
-	while (sequence.size() < size) {
-		int jn = jacobsthal(i);
-		if (jn > (int)size) {
+	while (true) {
+		int jn = jacobsthal(i++);
+		if (jn <= 0 || jn > (int)size) {
 			break;
 		}
 		if (jn != 0 && jn != lastValue) {
 			sequence.push_back(jn);
+			for (int k = jn - 1; k > lastValue && k > 1; --k) {
+				sequence.push_back(k);
+			}
 			lastValue = jn;
 		}
-		i++;
 	}
 	//Fill in remaining indices after last Jacobstahl number
-	if (!sequence.empty() && sequence.back() < (int)size) {
-		for (int j = sequence.back() + 1; j <= (int)size; j++) {
-			sequence.push_back(j);
-		}
+	for (int j = lastValue + 1; j <= (int)size; j++) {
+		sequence.push_back(j);
 	}
 	return sequence;
 }

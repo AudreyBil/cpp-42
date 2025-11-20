@@ -6,7 +6,7 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 14:14:06 by abillote          #+#    #+#             */
-/*   Updated: 2025/11/18 14:39:42 by abillote         ###   ########.fr       */
+/*   Updated: 2025/11/20 14:07:43 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,9 @@ class PmergeMe {
 		std::vector<int> generateJacobsthalSequence(size_t size);
 
 		int jacobsthal(int n);
+
+		//Counter
+		size_t m_counter;
 
 		// debug state
 		static bool m_debugEnabled;
