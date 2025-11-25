@@ -1,4 +1,4 @@
-NAME = easyfind
+NAME = mutant
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98

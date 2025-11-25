@@ -5,8 +5,9 @@
 #include <algorithm>
 #include <cmath>
 
-// debug member definition
-bool PmergeMe::m_debugEnabled = true;
+bool PmergeMe::m_debugEnabled = false;
+
+// ==================== PUBLIC UTILITIES ====================
 
 void PmergeMe::dbgLog(const char* color, const std::string& tag,
                       const std::string& msg) {
@@ -35,79 +36,11 @@ static std::string toStr(size_t v) {
     return oss.str();
 }
 
-PmergeMe::PmergeMe(std::vector<int> input) : m_counter(0) {
-    struct timeval t1;
-    struct timeval t2;
-    printContainer(input, "Before:", "true");
-    gettimeofday(&t1, NULL);
-    std::vector<int> outputVec = mergeInsertionVec(input);
-    gettimeofday(&t2, NULL);
-    printContainer(outputVec, "After:", "true");
-    printTime("vector", t1, t2, input.size());
-    std::cout << "Number of comparisons with vector: " << m_counter
-              << std::endl;
-    std::cout << "Ford-Johnson max comparisons for " << input.size()
-              << " elements: " << fordJohnsonMaxComparisons(input.size())
-              << std::endl;
-    m_counter = 0;
-    bool is_sorted = true;
+// ==================== CONSTRUCTORS ====================
 
-    for (size_t i = 1; i < outputVec.size(); i++) {
-        if (outputVec[i - 1] > outputVec[i]) {
-            is_sorted = false;
-            break;
-        }
-    }
+PmergeMe::PmergeMe() : m_counter(0){};
 
-    if (is_sorted) {
-        dbgLog(CLR_GREEN, "SUCCESS", "Vector is sorted");
-    } else {
-        dbgLog(CLR_MAGENTA, "FAIL", "Vector is not sorted");
-    }
-
-    if (input.size() == outputVec.size()) {
-        dbgLog(CLR_GREEN, "SUCCESS", "All numbers are present in the output");
-    } else {
-        dbgLog(CLR_MAGENTA, "FAIL",
-               "Missing numbers in the output: expected " +
-                   toStr(input.size()) + ", got " + toStr(outputVec.size()));
-    }
-
-    dbgLog(CLR_BLUE, "DEBUG", "Print input asfter vector");
-    printContainer(input);
-
-    //----Deque----//
-    // Convert input to deque
-    std::deque<int> inputDeq(input.begin(), input.end());
-    gettimeofday(&t1, NULL);
-    std::deque<int> outputDeq = mergeInsertionDeq(inputDeq);
-    gettimeofday(&t2, NULL);
-    printTime("deque", t1, t2, input.size());
-    std::cout << "Number of comparisons with deque: " << m_counter << std::endl;
-    m_counter = 0;
-    is_sorted = true;
-
-    for (size_t i = 1; i < outputDeq.size(); i++) {
-        if (outputDeq[i - 1] > outputDeq[i]) {
-            is_sorted = false;
-            break;
-        }
-    }
-
-    if (is_sorted) {
-        dbgLog(CLR_GREEN, "SUCCESS", "Deque is sorted");
-    } else {
-        dbgLog(CLR_MAGENTA, "FAIL", "Deque is not sorted");
-    }
-
-    if (input.size() == outputDeq.size()) {
-        dbgLog(CLR_GREEN, "SUCCESS", "All numbers are present in the output");
-    } else {
-        dbgLog(CLR_MAGENTA, "FAIL",
-               "Missing numbers in the output: expected " +
-                   toStr(input.size()) + ", got " + toStr(outputDeq.size()));
-    }
-};
+PmergeMe::PmergeMe(const PmergeMe& other) : m_counter(other.m_counter) {}
 
 PmergeMe& PmergeMe::operator=(const PmergeMe& other) {
     if (this != &other) *this = other;
@@ -115,6 +48,31 @@ PmergeMe& PmergeMe::operator=(const PmergeMe& other) {
 }
 
 PmergeMe::~PmergeMe(){};
+
+PmergeMe::PmergeMe(std::vector<int> input) : m_counter(0) {
+    struct timeval t1;
+    struct timeval t2;
+
+    // Vector
+    printContainer(input, "Before:", "true");
+    gettimeofday(&t1, NULL);
+    std::vector<int> outputVec = mergeInsertionVec(input);
+    gettimeofday(&t2, NULL);
+    printContainer(outputVec, "After:", "true");
+    processAndValidate<std::vector<int> >("vector", input, outputVec, t1, t2);
+
+    // Deque
+    std::deque<int> inputDeq(input.begin(), input.end());
+    gettimeofday(&t1, NULL);
+    std::deque<int> outputDeq = mergeInsertionDeq(inputDeq);
+    gettimeofday(&t2, NULL);
+    processAndValidate<std::deque<int> >("deque", inputDeq, outputDeq, t1, t2);
+
+    // Max comparisons
+    std::cout << CLR_BLUE << "Ford-Johnson max comparisons for " << input.size()
+              << " elements: " << fordJohnsonMaxComparisons(input.size())
+              << CLR_RESET << std::endl;
+};
 
 // ==================== VECTOR IMPLEMENTATION ====================
 
@@ -191,7 +149,7 @@ std::vector<int> PmergeMe::mergeInsertionVec(std::vector<int> input) {
     return mainChain;
 }
 
-std::vector<Pair> PmergeMe::makePairsVec(std::vector<int> input) {
+std::vector<PmergeMe::Pair> PmergeMe::makePairsVec(std::vector<int> input) {
     std::vector<Pair> pairs;
 
     for (size_t i = 0; i + 1 < input.size(); i += 2) {
@@ -231,7 +189,7 @@ void PmergeMe::insertPendChainVec(std::vector<int>& mainChain,
 
     // Generate the insertion order using Jacobsthal sequence
     std::vector<size_t> insertionOrder =
-        generateInsertionOrderVec(pendChain.size());
+        generateInsertionOrder<std::vector<size_t> >(pendChain.size());
 
     dbgLog(CLR_MAGENTA, "Step", "Generating Insertion order:");
     printContainer(insertionOrder);
@@ -300,45 +258,6 @@ void PmergeMe::insertPendChainVec(std::vector<int>& mainChain,
     }
 }
 
-std::vector<size_t> PmergeMe::generateInsertionOrderVec(size_t pendSize) {
-    std::vector<size_t> order;
-
-    if (pendSize == 0) return order;
-
-    // First, always insert first element as it is always the smallest (as
-    // pendChain[0] < mainChain[0])
-    order.push_back(1);
-
-    if (pendSize == 1) return order;
-
-    size_t lastInserted = 1;  // We've conceptually covered up to b1 (1-based)
-
-    // Jacbobsthal sequence to determine insertion order - starts at 3 as
-    // J(1)=1, J(2)=1 (already covered)
-    for (int k = 3;; k++) {
-        size_t currJacob = jacobsthal(k);
-
-        // Insert from min(currJacob, pendSize) down to lastInserted+1
-        size_t high = currJacob;
-        if (high > pendSize) {
-            high = pendSize;
-        }
-
-        // Insert indices in descending order
-        for (size_t index = high; index > lastInserted; index--) {
-            order.push_back(index);
-        }
-
-        lastInserted = currJacob;
-
-        if (currJacob >= pendSize) {
-            break;
-        }
-    }
-
-    return order;
-}
-
 // ==================== DEQUE IMPLEMENTATION ====================
 
 std::deque<int> PmergeMe::mergeInsertionDeq(std::deque<int> input) {
@@ -393,7 +312,7 @@ std::deque<int> PmergeMe::mergeInsertionDeq(std::deque<int> input) {
     return mainChain;
 }
 
-std::deque<Pair> PmergeMe::makePairsDeq(std::deque<int> input) {
+std::deque<PmergeMe::Pair> PmergeMe::makePairsDeq(std::deque<int> input) {
     std::deque<Pair> pairs;
 
     for (size_t i = 0; i + 1 < input.size(); i += 2) {
@@ -420,7 +339,7 @@ void PmergeMe::insertPendChainDeq(std::deque<int>& mainChain,
 
     // Generate the insertion order using Jacobsthal sequence
     std::deque<size_t> insertionOrder =
-        generateInsertionOrderDeq(pendChain.size());
+        generateInsertionOrder<std::deque<size_t> >(pendChain.size());
 
     // Track positions of original mainChain elements as we insert (as numbers
     // will shift)
@@ -473,44 +392,7 @@ void PmergeMe::insertPendChainDeq(std::deque<int>& mainChain,
     }
 }
 
-std::deque<size_t> PmergeMe::generateInsertionOrderDeq(size_t pendSize) {
-    std::deque<size_t> order;
-
-    if (pendSize == 0) return order;
-
-    // First, always insert first element as it is always the smallest (as
-    // pendChain[0] < mainChain[0])
-    order.push_back(1);
-
-    if (pendSize == 1) return order;
-
-    size_t lastInserted = 1;  // We've conceptually covered up to b1 (1-based)
-
-    // Jacbobsthal sequence to determine insertion order - starts at 3 as
-    // J(1)=1, J(2)=1 (already covered)
-    for (int k = 3;; k++) {
-        size_t currJacob = jacobsthal(k);
-
-        // Insert from min(currJacob, pendSize) down to lastInserted+1
-        size_t high = currJacob;
-        if (high > pendSize) {
-            high = pendSize;
-        }
-
-        // Insert indices in descending order
-        for (size_t index = high; index > lastInserted; index--) {
-            order.push_back(index);
-        }
-
-        lastInserted = currJacob;
-
-        if (currJacob >= pendSize) {
-            break;
-        }
-    }
-
-    return order;
-}
+// ==================== UTILITIES ====================
 
 // Jacbostahl number calculation
 size_t PmergeMe::jacobsthal(int n) {
@@ -529,8 +411,8 @@ size_t PmergeMe::jacobsthal(int n) {
 // Time Utility functions
 void PmergeMe::printTime(const std::string& containerType, struct timeval& ts1,
                          struct timeval& ts2, size_t inputSize) {
-    std::cout << "Time to process a range of " << inputSize
-              << " elements with std::" << containerType << ": ";
+    std::cout << CLR_MAGENTA << "Time to process a range of " << inputSize
+              << " elements with std::" << containerType << ": " << CLR_RESET;
     displayTime(ts1, ts2);
 }
 

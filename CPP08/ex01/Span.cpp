@@ -6,105 +6,76 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 17:57:36 by abillote          #+#    #+#             */
-/*   Updated: 2025/08/12 12:41:17 by abillote         ###   ########.fr       */
+/*   Updated: 2025/11/25 15:13:12 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 
 Span::Span()
-: m_capacity(0)
-{
+    : m_capacity(0){
 
-};
+      };
 
-Span::Span(unsigned int n)
-: m_capacity(n)
-{
-	m_storage.reserve(m_capacity);
-};
+Span::Span(unsigned int n) : m_capacity(n) { m_storage.reserve(m_capacity); };
 
 Span::Span(const Span& other)
-: m_capacity(other.m_capacity), m_storage(other.m_storage)
-{
+    : m_capacity(other.m_capacity),
+      m_storage(other.m_storage){
+
+      };
+
+Span& Span::operator=(const Span& other) {
+    if (this != &other) {
+        m_capacity = other.m_capacity;
+        m_storage = other.m_storage;
+    }
+    return *this;
+}
+
+Span::~Span(){
 
 };
 
-Span& Span::operator=(const Span& other)
-{
-	if (this != &other)
-	{
-		m_capacity = other.m_capacity;
-		m_storage = other.m_storage;
-	}
-	return *this;
+void Span::addNumber(int number) {
+    if (m_capacity == m_storage.size())
+        throw StorageFullException();
+    else
+        m_storage.push_back(number);
 }
 
-Span::~Span()
-{
+int Span::shortestSpan() const {
+    if (m_storage.size() <= 1) throw NotEnoughIntegersException();
+    std::vector<int> sortedVec(m_storage);
+    std::sort(sortedVec.begin(), sortedVec.end());
 
-};
-
-void Span::addNumber(int number)
-{
-	if (m_capacity == m_storage.size())
-		throw StorageFullException();
-	else
-		m_storage.push_back(number);
+    int minDist = INT_MAX;
+    std::vector<int>::iterator temp_pos = sortedVec.begin();
+    std::vector<int>::iterator temp_next = sortedVec.begin() + 1;
+    while (temp_next != sortedVec.end()) {
+        int currentDiff = *temp_next - *temp_pos;
+        if (currentDiff < minDist) minDist = currentDiff;
+        if (minDist == 0) return minDist;
+        temp_pos++;
+        temp_next++;
+    }
+    return minDist;
 }
 
-int Span::shortestSpan() const
-{
-	if (m_storage.size() <= 1)
-		throw NotEnoughIntegersException();
-	std::vector<int> sortedVec(m_storage);
-	std::sort(sortedVec.begin(), sortedVec.end());
+int Span::longestSpan() const {
+    if (m_storage.size() <= 1) throw NotEnoughIntegersException();
 
-	unsigned int minDist = UINT_MAX;
-	std::vector<int>::iterator temp_pos = sortedVec.begin();
-	std::vector<int>::iterator temp_next = sortedVec.begin() + 1;
-	while (temp_next != sortedVec.end())
-	{
-		if ((unsigned int)(*temp_next - *temp_pos) < minDist)
-			minDist = (unsigned int)(*temp_next - *temp_pos);
-		if (minDist == 0)
-			return minDist;
-		temp_pos++;
-		temp_next++;
-	}
-	return minDist;
+    std::vector<int> sortedVec(m_storage);
+    std::sort(sortedVec.begin(), sortedVec.end());
+    return sortedVec.back() - sortedVec.front();
 }
 
-int Span::longestSpan() const
-{
-	if (m_storage.size() <= 1)
-		throw NotEnoughIntegersException();
+unsigned int Span::getSize() { return m_storage.size(); }
 
-	std::vector<int> sortedVec(m_storage);
-	std::sort(sortedVec.begin(), sortedVec.end());
-	//std::cout << "Sorted array is: ";
-	//for (unsigned int i = 0; i <sortedVec.size(); i++)
-	//{
-	//	std::cout << sortedVec[i] << " ";
-	//}
-	//std::cout << "First nb of sorted array: " << sortedVec.front() << std::endl;
-	//std::cout << "Last nb of sorted array: " << sortedVec.back() << std::endl;
-	//std::cout << std::endl;
-	return sortedVec.back() - sortedVec.front();
+const char* Span::StorageFullException::what() const throw() {
+    return "This operation would overflow the storage capacity\n";
 }
 
-unsigned int Span::getSize()
-{
-	return m_storage.size();
-}
-
-
-const char* Span::StorageFullException::what() const throw()
-{
-	return "This operation would overflow the storage capacity\n";
-}
-
-const char* Span::NotEnoughIntegersException::what() const throw()
-{
-	return "There are less than 2 integers stored\n";
+const char* Span::NotEnoughIntegersException::what() const throw() {
+    return "There are less than 2 integers stored\n";
 }
