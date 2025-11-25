@@ -1,0 +1,7 @@
+# Inherit styles from Google, LLVM, WebKit, etc., or use 'None'
+# Popular choices for C++ are 'Google' or 'Microsoft'
+BasedOnStyle: Google
+IndentWidth: 4
+AccessModifierOffset: -4
+# Key setting to control the maximum line length
+ColumnLimit: 80

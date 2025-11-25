@@ -6,7 +6,7 @@
 /*   By: abillote <abillote@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 15:07:03 by abillote          #+#    #+#             */
-/*   Updated: 2025/08/16 15:21:18 by abillote         ###   ########.fr       */
+/*   Updated: 2025/11/24 17:26:27 by abillote         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <cctype>
 #include <cstdlib>
 #include <sstream>
+#include <list>
 
 class RPN {
 	public:
@@ -33,7 +34,7 @@ class RPN {
 
 
 	private:
-		std::stack<int> m_stack;
+		std::stack<int, std::list<int> > m_stack;
 		int m_result;
 
 		void processInput(const std::string& input);
